@@ -15,7 +15,8 @@ const discardBtn = document.getElementById("discard");
 const searchButton = document.getElementById("Go");
 const SearchInput = document.getElementById("SearchInput");
 editor.className = "Hide";
-const DeleteBtn = document.getElementById("Delete");
+const DeleteBtn = document.getElementById("DeleteBtn");
+const CreateBtn = document.getElementById("Create");
 const taskObj= {
     id:2,
 title:"THE at least we are going some",
@@ -31,7 +32,15 @@ description:"this project is made to hepl with projects"
 let hasRendered = false;
 
 
-
+let templateTask = {
+        id: 12,
+        title: "",
+        createdDate: "08-10-2026",
+        dueDate: "10-11-2026",
+        priority: "Low",
+        status: "Pending",
+        description: ""
+    }
 
 const taskDatabase = [
     {
@@ -523,15 +532,24 @@ function deleteTaskById(id) {
 }
 
 
-DeleteBtn.addEventListener("input", (event) => {
+DeleteBtn.addEventListener("click", (event) => {
     
-    const ids = searchTasks(searchText);
-    deleteTaskById(activeID);
+
+   deleteTaskById(activeID);
     ReloadDOM();
-    console.log(`THIS IS THE TASK ID :: ${activeID}`);
-    console.log("Delete");
-   
+   editor.className = "Hide";
 });
 
 
+
+CreateBtn.addEventListener("click", (event) => {
+
+    editor.className = "Show";
+
+    LoadTaskToEditor(tempTask);
+    ReloadDOM();
+   console.log(`THIS IS THE TASK ID :: ${activeID}`);
+    console.log("Delete");
+   
+});
 
