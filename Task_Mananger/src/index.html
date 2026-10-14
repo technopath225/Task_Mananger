@@ -6,68 +6,110 @@
     <title>Document</title>
     <link href = "styles.css"  rel = stylesheet>
 </head>
-<body>
+<body class="MainBody">
+<div>
+<div class="Header"><h4 class="Logo">Task Mananger</h4></div>
+
+</div>
+
+
+<div class = "SearchBar">
+
+<input type="text" id = "SearchInput" placeholder="Search" class = "Search" >
+
+
+   <select id = "EditorPriority" class= "Options"> 
+                        <option value="Date">Date</option>
+                        <option value="Priority">Priority</option>
+                        <option value="Status">Status</option>
+                    </select>
+<button id = "Create" class="Create">Create</button>
+</div>
+
+<div class="ListHolder">
+<ul id = "taskList" class = "taskList">
+
+</ul>
+
+</div>
 
 
 
 
-<div id ="SlideID" class= "EditSlide">
-
-    <div class ="SlideHeader">
-        <div class = "TitleSection">
-                <div class = "Title"> This is the task</div>
-
-                <div class="DueSection"> 
-                    
-                     <div class = "Due">DUE in 5 days</div>
-                     <div class="Date">05 Oct 2026</div>
-                <div>
-        </div>
-                    
-    
-
-
-        <div class="SlideUpperRight">
-
-            <div class = "PrioritySecion">
-                     <div class = "OptionsNames">Priority</div>
-                         <select class= "Options">
-                               <option value="Low">Low</option>
-                                 <option value="Medium">Medium</option>
-                               <option value="High">High</option>
-                        </select>
-            </div>
-        
-
-
-
+<div id = "EditorWindow" class ="EditorWindow">
+<div class ="Editor">
+    <div class ="EditorContentHolder">
+     
+        <div id = "EditorHeader" class = "EditorHeader">
             
-            <div class = "StatusSection">
+            <div class = "EditorTitleSection">
+        
+            <input id = "EditorTitle" type="text" placeholder="Task Title" class = "EditorTitle" >
+        </div>
+  
+                   
+<div class="EditorDateOptions">
+
+                        <div class="EditDueSection"> 
+                    
+                         <div class = "Due">Due Date</div>
+                       
+<input type="date" id="dueDate" class="EditorDueDate">
+
+                   
+                        </div>
+            <div>
+            <div class = "EditorOptions">
+                <div class = "SlideUpperMiddle">
+                    <div class = "OptionsNames">Priority</div>
+                        <select id = "EditorPriority" class= "Options">
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+                
+
+
+                <div class = "SlideUpperRight">
                      <div class = "OptionsNames">Status</div>
-                    <select class= "Options">
+                    <select class= "Options" id = "EditorStatus">
                         <option value="Pending">Pending</option>
                         <option value="Initialised">Initialised</option>
                         <option value="In Progress">In Progress</option>
                         <option value="Completed">Completed</option>
                         
                     </select>
-                
-                    
-            </div> 
-
+                </div> 
+                </div>
+               
+            </div>
+        </div>
         </div>
 
-    </div>  
-</div>
+<div>Description</div>
+    <textarea name="textarea" id="EditorDescription" class="textarea"></textarea>
 
-
-</div>
-
+    <div class = "EditorButtons">
+        <button id = "DeleteBtn">Delete</button>
+   <div class = "EditorSaveDisk">
     
+    <button id = "discard">Discard</button>
+
+<button id = "save">Save</button>
+               </div> 
+</div>
+    </div>
+ 
+</div></div></div>
+
 
      <script src = "main.js"></script>
 </body>
 </html>
+
+
+
 
 
 
