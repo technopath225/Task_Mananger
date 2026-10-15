@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0f19">
+  <title>Taskflow — Task Manager</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Sidebar">
+      <div class="brand"><span class="brand-icon" aria-hidden="true">✦</span><span>taskflow<span class="brand-dot">.</span></span></div>
+      <div class="sidebar-label">WORKSPACE</div>
+      <div class="nav-item active"><span aria-hidden="true">▦</span> Overview</div>
+      <div class="sidebar-bottom"><span class="status-dot"></span> Your workspace <span class="sidebar-note">Local & private</span></div>
+    </aside>
+    <main class="main-content">
+      <header class="topbar"><span>Workspace <span class="crumb">/</span> Overview</span><span class="topbar-right"><span class="status-dot"></span> All changes saved locally</span></header>
+      <div class="content">
+        <div class="page-heading"><div><p class="eyebrow">YOUR WORKSPACE</p><h1>Task overview</h1><p class="subtitle">Stay organized and keep your work moving.</p></div><button id="Create" class="btn btn-primary" type="button"><span aria-hidden="true">＋</span> New task</button></div>
+        <section class="stats" aria-label="Task statistics">
+          <div class="stat"><span class="stat-label">Total tasks</span><strong id="totalCount">0</strong><span class="stat-foot">Across all statuses</span></div>
+          <div class="stat"><span class="stat-label">Pending</span><strong id="pendingCount">0</strong><span class="stat-foot"><span class="indicator pending"></span> Waiting to start</span></div>
+          <div class="stat"><span class="stat-label">In progress</span><strong id="progressCount">0</strong><span class="stat-foot"><span class="indicator progress"></span> Currently active</span></div>
+          <div class="stat"><span class="stat-label">Completed</span><strong id="completedCount">0</strong><span class="stat-foot"><span class="indicator completed"></span> Work finished</span></div>
+        </section>
+        <section class="tasks-section" aria-labelledby="tasksHeading">
+          <div class="section-heading"><div><h2 id="tasksHeading">Your tasks <span id="visibleCount" class="count-pill">0</span></h2><p>Manage and track your work in one place.</p></div></div>
+          <div class="toolbar"><label class="search-wrap"><span aria-hidden="true">⌕</span><span class="sr-only">Search tasks</span><input id="SearchInput" type="search" placeholder="Search tasks..." autocomplete="off"></label><label class="filter-wrap"><span class="sr-only">Filter tasks</span><select id="taskFilter"><option value="all">All tasks</option><option value="Pending">Pending</option><option value="In Progress">In Progress</option><option value="Completed">Completed</option><option value="High">High priority</option><option value="Medium">Medium priority</option><option value="Low">Low priority</option></select></label></div>
+          <ul id="taskList" class="task-list" aria-live="polite"></ul>
+          <div id="emptyState" class="empty-state" hidden><div class="empty-icon">☷</div><h3>No tasks found</h3><p>Try a different search or filter, or create a new task.</p></div>
+        </section>
+      </div>
+    </main>
+  </div>
+  <div id="EditorWindow" class="modal-backdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+      <div class="modal-heading"><div><p class="eyebrow">TASK DETAILS</p><h2 id="modalHeading">New task</h2></div><button id="closeEditor" class="icon-btn" type="button" aria-label="Close editor">×</button></div>
+      <form id="taskForm" novalidate>
+        <div class="field"><label for="EditorTitle">Task title <span class="required">*</span></label><input id="EditorTitle" type="text" maxlength="120" placeholder="What needs to be done?" required></div>
+        <div class="field"><label for="EditorDescription">Description</label><textarea id="EditorDescription" rows="5" maxlength="3000" placeholder="Add a little more detail..."></textarea></div>
+        <div class="form-grid"><div class="field"><label for="dueDate">Due date <span class="required">*</span></label><input id="dueDate" type="date" required></div><div class="field"><label for="EditorPriority">Priority</label><select id="EditorPriority"><option>Low</option><option selected>Medium</option><option>High</option></select></div></div>
+        <div class="field"><label for="EditorStatus">Status</label><select id="EditorStatus"><option>Pending</option><option>In Progress</option><option>Completed</option></select></div>
+        <p id="formError" class="form-error" role="alert" hidden></p>
+        <div class="modal-actions"><button id="DeleteBtn" class="btn btn-danger" type="button" hidden>Delete task</button><div class="action-right"><button id="discard" class="btn btn-secondary" type="button">Cancel</button><button id="save" class="btn btn-primary" type="submit">Save task</button></div></div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
